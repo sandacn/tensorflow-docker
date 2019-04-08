@@ -108,7 +108,7 @@ ENV TF_CUDNN_VERSION=7.4
 RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
     LD_LIBRARY_PATH=/usr/local/cuda/lib64/stubs:${LD_LIBRARY_PATH} \
     tensorflow/tools/ci_build/builds/configured GPU \
-    bazel build -c opt --copt=-mavx --config=cuda --local_resources 4096,2.0,1.0 -j 2 --verbose_failures \
+    bazel build -c opt --copt=-mavx --config=cuda --verbose_failures \
 	--cxxopt="-D_GLIBCXX_USE_CXX11_ABI=0" \
         tensorflow/tools/pip_package:build_pip_package && \
     rm /usr/local/cuda/lib64/stubs/libcuda.so.1 && \
